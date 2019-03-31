@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<!-- <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Round One</title>
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+<link rel="stylesheet" href="assets/css/Article-Dual-Column.css">
+<link rel="stylesheet" href="assets/css/Footer-Clean.css">
+<link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
+<link rel="stylesheet" href="assets/css/Profile-Edit-Form-1.css">
+<link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head> -->
+
+<body style="font-size: 10px;">
+  <div class="container profile profile-view" id="profile">
+    <!-- <div class="row">
+      <div class="col-md-12 alert-col relative">
+        <div class="alert alert-info absolue center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Profile save with success</span></div>
+      </div>
+    </div> -->
+    <%form_for (@user)>
+      <div class="form-row profile-row">
+        <div class="col-md-4 col-xl-2 relative"></div>
+        <div class="col-md-8 col-xl-8">
+          <h1 style="font-size: 16px;">Personal Details</h1>
+          <h6 class="text-left" style="font-size: 10px;">Basic personal information</h6>
+          <hr>
+          <div class="form-row">
+            <div class="col">
+              <h6 class="text-left" style="font-size: 10px;">Basic personal information</h6>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-sm-12 col-md-6 col-xl-3">
+              <div class="form-group"><label style="font-size: 10px;">Firstname </label><input class="form-control" type="text" placeholder="First Name" name="firstname" style="font-size: 10px;"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-xl-3">
+              <div class="form-group"><label style="font-size: 10px;">Lastname </label><input class="form-control" type="text" placeholder="Last Name" name="lastname" style="font-size: 10px;"></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-xl-2">
+              <div class="form-group"><label style="font-size: 10px;">Gender</label><select class="form-control" style="font-size: 10px;"><option value="0" selected="">Male</option><option value="1">Female</option><option value="2">Other</option><option value="14">This is item 3</option></select></div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-xl-2">
+              <div class="form-group"><label style="font-size: 10px;">Date of Birth</label><input class="form-control" type="date" style="font-size: 10px;"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group" style="font-size: 10px;"><label>Phone Number</label><input class="form-control" type="email" autocomplete="off" required="" name="email" style="font-size: 10px;"></div>
+            </div>
+            <div class="col">
+              <div class="form-group" style="font-size: 10px;"><label>Email address&nbsp;</label><input class="form-control" type="email" autocomplete="off" required="" name="email" style="font-size: 10px;"></div>
+            </div>
+            <div class="col">
+              <div class="form-group" style="font-size: 10px;">
+                <div class="form-check"><input class="form-check-input d-flex" type="checkbox" name="account_access" value="1" checked="" id="formCheck-1" style="color: #13de33;"><label class="form-check-label" for="formCheck-1">Send account access</label></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group" style="font-size: 10px;"><label>Start date</label><input class="form-control" type="date" style="font-size: 10px;"></div>
+            </div>
+          </div>
+          <hr>
+          <div class="form-row">
+            <div class="col-xl-6 flex-row">
+              <div class="form-row d-flex flex-column">
+                <div class="col-sm-12 col-md-6 col-xl-12 d-flex flex-column">
+                  <div class="form-group"><label style="font-size: 10px;">Street Address</label><input class="form-control" type="password" name="password" autocomplete="off" required="" style="font-size: 10px;"></div>
+                </div>
+                <div class="col-xl-12">
+                  <div class="form-group"><label style="font-size: 10px;">Street Address</label><input class="form-control" type="password" name="password" autocomplete="off" required="" style="font-size: 10px;"></div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-12">
+                  <div class="form-group"><label style="font-size: 10px;">City</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required="" style="font-size: 10px;"></div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-12">
+                  <div class="form-group"><label style="font-size: 10px;">State /Province</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required="" style="font-size: 10px;"></div>
+                  <div class="form-row">
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                      <div class="form-group"><label style="font-size: 10px;">Zip / Postal Code</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required="" style="font-size: 10px;"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-8">
+                      <div class="form-group"><label style="font-size: 10px;">Country</label><input class="form-control" type="password" name="confirmpass" autocomplete="off" required="" style="font-size: 10px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <div class="avatar">
+                <div class="avatar-bg center" style="height: 150px;width: 150px;"></div>
+                <%= image_tag('1234566.png.jpeg',size: '150x150')%>
+                <div class="avatar"><input type="file" class="form-control" name="avatar-file" style="font-size: 12px;"></div>
+                <div class="form-group"><label style="font-size: 12px;">How do you find us?</label><select class="form-control" style="font-size: 10px;"><optgroup label="This is a group"><option value="0" selected="">Social Media</option><option value="1">Online Forums</option><option value="2">Search Online</option></optgroup></select></div>
+                <div
+                class="form-group"><label style="font-size: 12px;">Contact Name</label><input class="form-control" type="text" style="font-size: 10px;"><label style="font-size: 12px;">Phone Number</label><input class="form-control" type="text"><label style="font-size: 12px;">Relationship</label>
+                <select
+                class="form-control" style="font-size: 10px;">
+                <optgroup label="This is a group">
+                  <option value="0" selected="">Parent</option>
+                  <option value="1">Care Taker</option>
+                  <option value="2">Family Member</option>
+                  <option value="3">Spouse</option>
+                  <option value="4">Sibling</option>
+                  <option value="5">Legal Guardian</option>
+                  <option value="6">Friend</option>
+                  <option value="7">Other</option>
+                </optgroup>
+              </select>
+              <div class="form-row">
+                <div class="col-md-12 content-right"><button class="btn btn-primary form-btn" type="submit" style="font-size: 12px;">SAVE </button><button class="btn btn-danger form-btn" type="reset" style="font-size: 12px;">CANCEL </button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-2"></div>
+  </div>
+</form>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/Profile-Edit-Form.js"></script>
+</body>
+
+</html>

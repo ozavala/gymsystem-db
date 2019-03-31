@@ -1,0 +1,23 @@
+Show User
+<table>
+  <thead>
+    <th> Gym Site </th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>User Role</th>
+  </thead>
+<tbody>
+  <% user = @user %>
+  <td><%= user.gymsite.surname %>
+  <td><%= user.first_name %><br></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %><br></td>
+
+  <td><%= Role.find(user.role_ids)[0].role_name %></td>
+  
+</tbody>
+</table>
+<p><%= link_to 'Edit User', edit_user_path%></p>
+
+  <td><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>

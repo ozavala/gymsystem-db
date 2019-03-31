@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+  @import "font-awesome";
+  .navbar-brand > img{
+     position: absolute;
+     left: 5px;
+     top: 0px;
+     height: 50px;
+     font-size: 30px;
+     padding: 0px;
+     // line-height: 35px;
+     //padding-bottom: 20px;
+
+   }
+   .navbar-nav {
+     display: block;
+     padding-left: 20px;
+   }
+   #logo-link {
+     color: #555 !important;
+   }
+   .navbar-link{
+     line-height: 55px;
+     color: #777;
+     position: absolute;
+     right: 150px;
+     top: 1px;
+     height: 50px;
+     // border: 1px solid blue;
+
+   }
+   #btn-gly{
+     font-size: 30px;
+   }
+   footer{
+     background-color: #e7e7e7;
+   }
+   form-control {
+      position: relative;
+      font-size: 12px;
+      height: auto;
+      padding: 0px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+  }
+  .form-horizontal .form-group {
+      border-bottom: 1px solid #eff2f7;
+      padding-bottom: 10px;
+      margin-bottom: 0px;
+      // width: 500px;
+  }
+
+  .form-horizontal.tasi-form .form-group:last-child {
+      border-bottom: none;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+  }
+
+
+  .form-horizontal.tasi-form .form-group .help-block {
+      margin-bottom: 0;
+  }
+
+  #defaultChecked{
+    border-bottom: 1px solid #eff2f7;
+    padding: 10px;
+    margin-left: 5px;
+  }
+  // #Simple form

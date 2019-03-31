@@ -1,0 +1,10 @@
+<div class = 'simple_form'>
+<%=simple_form_for  @gymsite, method: 'post' do |form| %>
+<%= form.input :surname, label: 'Name:' %>
+<%= form.input :legal_id, label: 'Legal ID' %>
+<%= form.input :description, as: :text %>
+<%= form.input :email %>
+<%= form.input :start_date, as: :date, label: 'Date of Start' %>
+<%= form.button :submit, "Create Gym", class: "btn btn-large btn-danger", "data-disable-with" => "Submitting.."%>
+<% end %>
+</div>

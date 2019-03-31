@@ -1,0 +1,45 @@
+<div class='container-fluid'>
+<nav class="navbar navbar-default navbar-expand-md">
+    <%= link_to image_tag( 'icon-logo-fer1.png', alt: 'logo'), access_menu_path, class: 'navbar-brand'%>
+    <span class= "navbar-link">
+      <%# if user_signed_in? && current_user.role == 'admin' %>
+      <%#= link_to "Panel de Administración", admin_users_path %>
+     <%#=link_to 'Contabilidad', accounting_reports_index_path %>
+      <%# elsif user_signed_in? && current_user.is_member?%>
+      <%# redirect_to '/access/blog'%>
+      <%# end %>
+    </span>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+  <div id="navbar" class="navbar-collapse collapse " >
+    <ul class="nav navbar-nav mx-auto">
+      <li class="nav-item" role="presentation"><%= link_to 'Inicio', access_menu_path %></li>
+      <!-- <li class="nav-item" role="presentation"><#%= link_to 'Calendario de Actividades', access_week_calendar_path %></li> -->
+
+      <li class="nav-item" role="presentation"><a class="nav-link" href="#">Tienda</a></li>
+      <li class="nav-item" role="presentation"><a class="nav-link" <%#=link_to 'Blog', access_blog_path %></a> </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Admin </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Panel de Administración</a>
+          <a class="dropdown-item" href="#">Ajustes de Contabilidad</a>
+          <a class="dropdown-item" href="#">Reportes</a>
+        </div>
+      </li>
+      </ul>
+    <!-- <ul class="nav navbar-nav navbar-right">
+      <#% if user_signed_in? %>
+      <li><#%=link_to "Salir", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+      <#%else%>
+        <li><#%=link_to 'Log in', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+          <li><#%= link_to 'Registrarse', new_user_registration_path, class: "glyphicon glyphicon-user" %></li>
+      <#%end%>
+    </ul> -->
+  </div>
+</nav>
+</div>

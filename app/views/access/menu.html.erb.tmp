@@ -1,0 +1,93 @@
+
+
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid text-center text-warning bg-danger border rounded-circle border-danger shadow-lg align-items-center" style="color: rgb(0,0,0.7);">
+      <%=image_tag '117719-a.png', width: "1000px", class: "img-responsive d-flex float-left" %>
+      <br><br>
+      <%#= link_to content_tag(:h5,"REGISTRATE PARA OBTENER CLASES DE PRUEBA"), , class: 'btn btn-danger btn-block'%>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center" style="font-size: 30px;font-family: 'Baloo Bhaijaan', cursive;">Porque El Muay Thai Es el Perfecto Arte Marcial</h1>
+      </div>
+    </div>
+    <div class="row d-flex align-items-start">
+      <div class="col-lg-6 col-xl-5">
+        <p>Desarrollado a lo largo de cientos de años, el antiguo arte marcial de Muay Thai es conocido por su tremendo poder, su máxima eficiencia y su simplicidad. A menudo referido como el "Arte de los Ocho Miembros", Muay Thai utiliza una hermosa
+          sinfonía de patadas, golpes, rodillas y codos con fluidez y gracia.<br></p>
+          <p>Muay Thai es ahora una de las artes marciales más conocidas y practicadas en el mundo. Se ha demostrado que es efectivo, por lo que es la base más común en el popular deporte de rápido crecimiento de las artes marciales mixtas.<br></p>
+          <p>Hoy, te damos las razones por las cuales Muay Thai es el arte marcial perfecto:&nbsp; &nbsp;</p>
+          <ul>
+            <li>1) Es ampliamente reconocido como el arte marcial más efectivo del mundo.</li>
+            <li>2) Es eficaz en todos los rangos de lucha de pie.</li>
+            <li>3) Es simple y fácil de aprender.</li>
+            <li>4) Es altamente efectivo para la autodefensa.</li>
+            <li>5) Es un entrenamiento tanto aeróbico como anaeróbico.</li>
+            <li>6) Quema más de 1.000 calorías por hora.</li>
+            <li>7) Fortalece tu mente, cuerpo y espíritu.</li>
+            <li>8) Es uno de los fundamentos clave para el deporte de Artes Marciales  Mixtas (MMA).</li>
+            <li>9) Desatará tu potencial humano en todos los ámbitos de la vida.</li>
+            <li>10) Porque te da coraje y te enseña a mantener la calma</li>
+          </ul>
+          <a class="btn btn-outline"
+          role="button" href="access/blog.html">Leer más ... -->></a>
+        </div>
+        <div class="col"><%=image_tag "117784.jpg", class: "d-flex align-items-start img-responsive",  width: "550", height: "435"%></div>
+
+      </div>
+      <%= render 'section' %>
+      <div class="row">
+        <div class="col">
+          <h1 class="text-center" style="font-size: 30px;font-family: 'Baloo Bhaijaan', cursive;">Encontré un entrenamiento que me hace sentir como la Mujer Maravilla</h1>
+        </div>
+      </div>
+      <div class="row d-flex align-items-start">
+        <div class="col-lg-6">
+          <%=image_tag "117756a.jpg", class: "d-flex align-items-start img-responsive", width: "460", height: "435"%>
+        </div>
+        <div class="col-lg-6">
+          <p>He intentado básicamente todo y nada me ha servido. Los entrenamientos en cinta rodante son aburridos ; correr me hace volver a la clase de educación física de octavo grado; El reformador Pilates es básicamente una versión elegante de un dispositivo de tortura medieval (¡pero para la aptitud física!); y la bicicleta es en realidad una vista previa del séptimo círculo del infierno. (¿Por qué mis pies están atrapados en la bicicleta? ¿Qué haré si hay un incendio? ¿Por qué está tan oscuro aquí? Estoy divagando).</p>
+          <p>Revisar las publicaciones específicamente enfocadas hacia la salud y el bienestar de las mujeres ha tenido poco impacto en mi perspectiva. Sí, sé a ciencia cierta que el ejercicio regular está vinculado a muchos beneficios sorprendentes para la salud: longevidad, mejor humor y mejor salud mental, y reducción del estrés, entre otros. Saber las cosas buenas que puede aportar el ejercicio no altera el hecho de que odio todo lo relacionado con el ejercicio. Odio la sudoración.</p>
+          <p> Odio la repetitividad que adormece la mente de una cinta de correr o una máquina elíptica. Odio los brotes de rosácea después del ejercicio que tardan horas en calmarse. Odio el dolor posterior de todo el cuerpo que dura varios días. ... &nbsp; &nbsp;&nbsp;</p>
+          <a class="btn btn-outline"
+          role="button" href="access/blog.html">Leer más ... -->></a><br>
+        </div>
+      </div>
+    </div>
+    <div class="footer-clean">
+      <footer>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-sm-4 col-md-3 item">
+              <h3>Otros Servicios</h3>
+              <ul>
+                <li><a href="#">Programas Empresariales</a></li>
+                <li>Programas Escolares</li>
+                <li><a href="#">Coaching</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 col-md-3 item">
+              <h3>Dirección</h3>
+              <ul>
+                <li><a href="#">Centro Comercial La Torre</a></li>
+                <li><a href="#">Piso 3 - Local # xxx</a></li>
+                <li>La Puntilla - Samborondón</li>
+              </ul>
+            </div>
+            <div class="col-sm-4 col-md-3 item">
+              <h3>Información</h3>
+              <ul>
+                <li><a href="#">Celular: 099XXXXXXXXX</a></li>
+                <li><a href="#">Correo Electrónico: info@roundone.com</a></li>
+                <li></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+              <p class="copyright">ROUND-ONE © 2019</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
