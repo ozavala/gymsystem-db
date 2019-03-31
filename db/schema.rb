@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_184713) do
+ActiveRecord::Schema.define(version: 2019_03_31_215326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
     t.string "acc_class"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "accounting_periods", force: :cascade do |t|
+    t.integer "acc_period_num"
+    t.date "from_day"
+    t.date "thru_day"
+    t.bigint "period_type_id"
+    t.bigint "gymsite_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gymsite_id"], name: "index_accounting_periods_on_gymsite_id"
+    t.index ["period_type_id"], name: "index_accounting_periods_on_period_type_id"
   end
 
   create_table "addresses", force: :cascade do |t|
@@ -40,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.bigint "payment_id"
     t.bigint "package_id"
+    t.bigint "payment_id"
     t.date "enrollment_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,11 +67,9 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
     t.string "name"
     t.string "description"
     t.bigint "account_type_id"
-    t.bigint "period_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_type_id"], name: "index_gl_accounts_on_account_type_id"
-    t.index ["period_type_id"], name: "index_gl_accounts_on_period_type_id"
   end
 
   create_table "gymsites", force: :cascade do |t|
@@ -73,13 +83,17 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
   end
 
   create_table "invoice_lines", force: :cascade do |t|
+    t.bigint "invoice_id"
     t.bigint "package_id"
-    t.integer "qty"
-    t.decimal "price"
+    t.decimal "quantity", precision: 20, scale: 2
+    t.decimal "unit_price", precision: 20, scale: 2
+    t.decimal "extended_amount", precision: 20, scale: 2
     t.text "description"
     t.text "message"
+    t.integer "taxable_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_lines_on_invoice_id"
     t.index ["package_id"], name: "index_invoice_lines_on_package_id"
   end
 
@@ -91,15 +105,14 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.bigint "payment_id"
+    t.bigint "package_id"
     t.string "invoice_number"
-    t.string "invoice_refernce"
-    t.date "issue_date"
-    t.decimal "amount"
-    t.boolean "tax_flag"
+    t.string "invoice_reference"
+    t.date "invoice_date"
+    t.decimal "amount", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_id"], name: "index_invoices_on_payment_id"
+    t.index ["package_id"], name: "index_invoices_on_package_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -111,16 +124,31 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.bigint "gl_account_id"
+  create_table "payment_applications", force: :cascade do |t|
+    t.decimal "amount_applied", precision: 20, scale: 2
     t.bigint "user_account_id"
-    t.date "payment_date"
-    t.date "due_date"
-    t.integer "payment_status"
+    t.bigint "invoice_line_id"
+    t.bigint "payment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["gl_account_id"], name: "index_payments_on_gl_account_id"
-    t.index ["user_account_id"], name: "index_payments_on_user_account_id"
+    t.index ["invoice_line_id"], name: "index_payment_applications_on_invoice_line_id"
+    t.index ["payment_id"], name: "index_payment_applications_on_payment_id"
+    t.index ["user_account_id"], name: "index_payment_applications_on_user_account_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "payment_method_type_id"
+    t.integer "pay_type_id"
+    t.date "effective_date"
+    t.date "transaction_date"
+    t.string "payment_ref_no"
+    t.string "description"
+    t.text "pay_comment"
+    t.decimal "amount", precision: 20
+    t.integer "user_id"
+    t.integer "gymsite_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "period_types", force: :cascade do |t|
@@ -179,6 +207,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
   create_table "user_accounts", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "gl_account_id"
+    t.string "description"
     t.date "from_date"
     t.date "thru_date"
     t.datetime "created_at", null: false
@@ -199,15 +228,18 @@ ActiveRecord::Schema.define(version: 2019_03_30_184713) do
     t.index ["gymsite_id"], name: "index_users_on_gymsite_id"
   end
 
+  add_foreign_key "accounting_periods", "gymsites"
+  add_foreign_key "accounting_periods", "period_types"
   add_foreign_key "addresses", "users"
   add_foreign_key "enrollments", "packages"
   add_foreign_key "enrollments", "payments"
   add_foreign_key "gl_accounts", "account_types"
-  add_foreign_key "gl_accounts", "period_types"
+  add_foreign_key "invoice_lines", "invoices"
   add_foreign_key "invoice_lines", "packages"
-  add_foreign_key "invoices", "payments"
-  add_foreign_key "payments", "gl_accounts"
-  add_foreign_key "payments", "user_accounts"
+  add_foreign_key "invoices", "packages"
+  add_foreign_key "payment_applications", "invoice_lines"
+  add_foreign_key "payment_applications", "payments"
+  add_foreign_key "payment_applications", "user_accounts"
   add_foreign_key "phones", "users"
   add_foreign_key "profiles", "enrollments"
   add_foreign_key "profiles", "users"

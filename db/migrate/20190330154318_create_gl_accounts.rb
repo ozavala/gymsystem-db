@@ -6,7 +6,6 @@ class CreateGlAccounts < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :description
       t.references :account_type, foreign_key: true
-      t.references :period_type, foreign_key: true
 
       t.timestamps
     end
