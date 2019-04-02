@@ -1,0 +1,195 @@
+class CreateGymsystemTables < ActiveRecord::Migration[5.2]
+
+  def change
+
+  create_table "gymsites", force: :cascade do |t|
+    t.string "surname"
+    t.string "legal_id"
+    t.string "logo"
+    t.text "description"
+    t.string "email"
+    t.date "start_date"
+    t.date "thru_date"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "country"
+    t.integer "region"
+    t.integer "sector"
+    t.text "instructions"
+  end
+
+    create_table :roles do |t|
+      t.string :role_name
+
+    end
+
+    create_table :users do |t|
+      t.references :gymsite, foreign_key: true
+      t.string :first_name
+      t.string :last_name
+      t.string :password_digest
+      t.string :email
+      t.string :id_document
+      t.integer :document_type
+      t.string :irs_id
+
+    end
+
+    create_table :roles_users do |t|
+      t.references :user, foreign_key: true
+      t.references :role, foreign_key: true
+      t.date :from_date
+      t.date :thru_date
+
+    end
+
+    create_table :addresses do |t|
+      t.references :user, foreign_key: true
+      t.string :add_line1
+      t.string :add_line2
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :country
+      t.integer :region
+      t.integer :sector
+      t.text :instruction
+      t.integer :use_of
+
+    end
+
+    create_table :phones do |t|
+      t.references :user, foreign_key: true
+      t.string :number
+      t.integer :purpose
+
+
+    end
+
+    create_table :account_types do |t|
+      t.string :acc_type
+      t.string :acc_class
+
+
+    end
+
+    create_table :period_types do |t|
+      t.string :period_type_code
+      t.string :description
+
+    end
+
+    create_table :accounting_periods do |t|
+      t.integer :acc_period_num
+      t.date :from_day
+      t.date :thru_day
+      t.references :period_type, foreign_key: true
+      t.references :gymsite, foreign_key: true
+
+    end
+
+    create_table :gl_accounts do |t|
+      t.string :acc_code
+      t.string :acc_parent_code
+      t.string :name
+      t.string :description
+      t.references :account_type, foreign_key: true
+
+    end
+
+    create_table :user_accounts do |t|
+      t.references :user, foreign_key: true
+      t.references :gl_account, foreign_key: true
+      t.string :description
+      t.date :from_date
+      t.date :thru_date
+
+    end
+
+    create_table :payments do |t|
+      t.integer :payment_method_type_id #check ( 'REC', 'EXP')
+      t.integer :pay_type_id # receipt or didsbusement
+      t.date :effective_date
+      t.date :transaction_date
+      t.string :payment_ref_no
+      t.string :description
+      t.text :pay_comment
+      t.decimal :amount, precision: 20 , escale:2
+      t.integer :user_id, foreign_key: true
+      t.integer :gymsite_id, foreign_key: true
+
+    end
+
+    create_table :packages do |t|
+      t.string :name
+      t.decimal :price
+      t.date :from_date
+      t.date :thru_date
+
+    end
+
+    create_table :enrollments do |t|
+      t.references :package, foreign_key: true
+      t.references :payment, foreign_key: true
+      t.date :enrollment_date
+
+    end
+
+    create_table :profiles do |t|
+      t.references :user, foreign_key: true
+      t.string :username
+      t.string :avatar
+      t.date :birthday
+      t.integer :gender
+      t.integer :role
+      t.date :start_date
+      t.date :thru_date
+      t.references :enrollment, foreign_key: true
+      t.decimal :enrollment_fee, precision: 20, scale: 2
+      t.boolean :active
+      t.integer :level
+      t.integer :source
+      t.text :notes
+
+      t.timestamps
+    end
+    add_index :profiles, :username
+
+    create_table :invoice_types do |t|
+      t.string :invoice_type_code
+      t.decimal :tax_percent
+
+    end
+
+    create_table :invoices do |t|
+      t.references :package, foreign_key: true
+      t.string :invoice_number
+      t.string :invoice_reference
+      t.date :invoice_date
+      t.decimal :amount, precision: 20, scale: 2
+
+    end
+
+    create_table :invoice_lines do |t|
+      t.references :invoice, foreign_key: true
+      t.references :package, foreign_key: true
+      t.decimal :quantity, precision: 20, scale: 2
+      t.decimal :unit_price, precision: 20, scale: 2
+      t.decimal :extended_amount, precision: 20, scale: 2
+      t.text :description
+      t.text :message
+      t.integer :taxable_flag
+
+    end
+
+    create_table :payment_applications do |t|
+      t.decimal :amount_applied, precision: 20, scale:2
+      t.references :user_account, foreign_key: true
+      t.references :invoice_line, foreign_key: true
+      t.references :payment, foreign_key: true
+
+    end
+  end
+
+end

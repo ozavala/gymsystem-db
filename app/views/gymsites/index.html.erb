@@ -1,8 +1,26 @@
-<h2> Gymsites Index </h2>
-<div>
-<% @gymsites.each do |gymsite| %>
+<div class = 'container'>
+  <h2> Gymsites Index </h2>
+  <table class= 'table'>
+    <thead>
+    <th>&nbsp;</th>
+    </thead>
+      <tbody>
+    <% @gymsites.each do |gymsite| %>
+      <tr>
+        <td> <%= gymsite.surname %></td>
+        <td> <%= gymsite.start_date %></td>
+        <td><%= link_to 'Edit', edit_gymsite_path(gymsite)  %></td>
+        <td><%= link_to 'Show', gymsite_path(gymsite)  %></td>
+        <td><%= link_to 'Destroy', gymsite, method: :delete, data: { confirm: 'Are you sure?. Warning! if you delete this gym site, all the related data will de also deleted!' } %></td>
+      <tr>
+        <tr>
+          <%= gymsite.address1 %><br>
+          <%= gymsite.address2 %><br>
+          <%= gymsite.city %>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
 
- <%= link_to 'Gymsite Dashboard',
- '#' %>
-<% end %>
+  <%= link_to 'New Gymsite', new_gymsite_path %>
 </div>

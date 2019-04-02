@@ -6,7 +6,6 @@ class CreatePackages < ActiveRecord::Migration[5.2]
       t.date :from_date
       t.date :thru_date
 
-      t.timestamps
     end
   end
 end

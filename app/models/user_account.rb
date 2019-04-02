@@ -5,10 +5,9 @@
 #  id            :bigint(8)        not null, primary key
 #  user_id       :bigint(8)
 #  gl_account_id :bigint(8)
+#  description   :string
 #  from_date     :date
 #  thru_date     :date
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
 #
 
 class UserAccount < ApplicationRecord

@@ -10,8 +10,6 @@ class CreateInvoiceLines < ActiveRecord::Migration[5.2]
       t.text :message
       t.integer :taxable_flag
 
-      t.timestamps
-
     end
   end
 end

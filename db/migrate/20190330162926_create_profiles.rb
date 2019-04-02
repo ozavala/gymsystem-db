@@ -16,7 +16,6 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.integer :source
       t.text :notes
 
-      t.timestamps
     end
     add_index :profiles, :username
   end

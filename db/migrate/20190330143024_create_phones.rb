@@ -5,7 +5,6 @@ class CreatePhones < ActiveRecord::Migration[5.2]
       t.string :number
       t.integer :purpose
 
-      t.timestamps
     end
   end
 end

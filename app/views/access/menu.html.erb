@@ -5,6 +5,7 @@
   <h2> Admin Menu </h2>
   <div class= "identity"> Logged in as:<%= @useremail %></div>
   <ul>
+    <li><%= link_to "Manage Gym Sites", gymsites_path %></li>
     <li><%= link_to "Manage Admin Users", '#' %></li>
     <li><%= link_to "Logout",access_logout_path  %></li>
 

@@ -3,9 +3,8 @@ class CreateEnrollments < ActiveRecord::Migration[5.2]
     create_table :enrollments do |t|
       t.references :package, foreign_key: true
       t.references :payment, foreign_key: true
-
       t.date :enrollment_date
-      t.timestamps
+
     end
   end
 end

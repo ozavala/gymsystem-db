@@ -2,15 +2,12 @@
 #
 # Table name: invoices
 #
-#  id               :bigint(8)        not null, primary key
-#  payment_id       :bigint(8)
-#  invoice_number   :string
-#  invoice_refernce :string
-#  issue_date       :date
-#  amount           :decimal(, )
-#  tax_flag         :boolean
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                :bigint(8)        not null, primary key
+#  package_id        :bigint(8)
+#  invoice_number    :string
+#  invoice_reference :string
+#  invoice_date      :date
+#  amount            :decimal(20, 2)
 #
 
 class Invoice < ApplicationRecord

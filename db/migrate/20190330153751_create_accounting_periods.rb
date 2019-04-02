@@ -7,7 +7,6 @@ class CreateAccountingPeriods < ActiveRecord::Migration[5.2]
       t.references :period_type, foreign_key: true
       t.references :gymsite, foreign_key: true
 
-      t.timestamps
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_215326) do
+ActiveRecord::Schema.define(version: 2019_04_01_141651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
   create_table "account_types", force: :cascade do |t|
     t.string "acc_type"
     t.string "acc_class"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "accounting_periods", force: :cascade do |t|
@@ -28,26 +26,22 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.date "thru_day"
     t.bigint "period_type_id"
     t.bigint "gymsite_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["gymsite_id"], name: "index_accounting_periods_on_gymsite_id"
     t.index ["period_type_id"], name: "index_accounting_periods_on_period_type_id"
   end
 
   create_table "addresses", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "add_line1"
-    t.string "add_line2"
     t.string "city"
     t.string "state"
     t.string "zip"
-    t.string "country"
     t.integer "region"
     t.integer "sector"
     t.text "instruction"
     t.integer "use_of"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "country"
+    t.string "address1"
+    t.string "address2"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -55,8 +49,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.bigint "package_id"
     t.bigint "payment_id"
     t.date "enrollment_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["package_id"], name: "index_enrollments_on_package_id"
     t.index ["payment_id"], name: "index_enrollments_on_payment_id"
   end
@@ -67,8 +59,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.string "name"
     t.string "description"
     t.bigint "account_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["account_type_id"], name: "index_gl_accounts_on_account_type_id"
   end
 
@@ -80,6 +70,17 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.string "email"
     t.date "start_date"
     t.date "thru_date"
+    t.string "phone1"
+    t.string "phone2"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "country"
+    t.integer "region"
+    t.integer "sector"
+    t.text "instructions"
   end
 
   create_table "invoice_lines", force: :cascade do |t|
@@ -91,8 +92,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.text "description"
     t.text "message"
     t.integer "taxable_flag"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["invoice_id"], name: "index_invoice_lines_on_invoice_id"
     t.index ["package_id"], name: "index_invoice_lines_on_package_id"
   end
@@ -100,8 +99,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
   create_table "invoice_types", force: :cascade do |t|
     t.string "invoice_type_code"
     t.decimal "tax_percent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -110,8 +107,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.string "invoice_reference"
     t.date "invoice_date"
     t.decimal "amount", precision: 20, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["package_id"], name: "index_invoices_on_package_id"
   end
 
@@ -120,8 +115,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.decimal "price"
     t.date "from_date"
     t.date "thru_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "payment_applications", force: :cascade do |t|
@@ -129,8 +122,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.bigint "user_account_id"
     t.bigint "invoice_line_id"
     t.bigint "payment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["invoice_line_id"], name: "index_payment_applications_on_invoice_line_id"
     t.index ["payment_id"], name: "index_payment_applications_on_payment_id"
     t.index ["user_account_id"], name: "index_payment_applications_on_user_account_id"
@@ -147,23 +138,17 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.decimal "amount", precision: 20
     t.integer "user_id"
     t.integer "gymsite_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "period_types", force: :cascade do |t|
     t.string "period_type_code"
     t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "phones", force: :cascade do |t|
     t.bigint "user_id"
     t.string "number"
     t.integer "purpose"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_phones_on_user_id"
   end
 
@@ -182,8 +167,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.integer "level"
     t.integer "source"
     t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["enrollment_id"], name: "index_profiles_on_enrollment_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
     t.index ["username"], name: "index_profiles_on_username"
@@ -198,8 +181,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.bigint "role_id"
     t.date "from_date"
     t.date "thru_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_roles_users_on_role_id"
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
@@ -210,8 +191,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.string "description"
     t.date "from_date"
     t.date "thru_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["gl_account_id"], name: "index_user_accounts_on_gl_account_id"
     t.index ["user_id"], name: "index_user_accounts_on_user_id"
   end
@@ -220,11 +199,11 @@ ActiveRecord::Schema.define(version: 2019_03_31_215326) do
     t.bigint "gymsite_id"
     t.string "first_name"
     t.string "last_name"
+    t.string "password_digest"
     t.string "email"
     t.string "id_document"
     t.integer "document_type"
     t.string "irs_id"
-    t.string "password_digest"
     t.index ["gymsite_id"], name: "index_users_on_gymsite_id"
   end
 

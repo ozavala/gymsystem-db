@@ -1,10 +1,57 @@
-<div class = 'simple_form'>
-<%=simple_form_for  @gymsite, method: 'post' do |form| %>
-<%= form.input :surname, label: 'Name:' %>
-<%= form.input :legal_id, label: 'Legal ID' %>
-<%= form.input :description, as: :text %>
-<%= form.input :email %>
-<%= form.input :start_date, as: :date, label: 'Date of Start' %>
-<%= form.button :submit, "Create Gym", class: "btn btn-large btn-danger", "data-disable-with" => "Submitting.."%>
-<% end %>
-</div>
+<div class = 'container'>
+  <div class= 'row'><!-- títle -->
+    <div class='col-md-4 offset-md-4'>
+      <h2> New  Gymsite </h2>
+    </div>
+  </div>
+  <div class='row'><!-- main row -->
+    <div class = 'col-md-4 offset-md-4'> <!--first column -->
+      <%=simple_form_for @gymsite, method: 'post' do |form| %>
+      <%= form.input :surname, label: 'Name:' %>
+      <%= form.input :legal_id, label: 'Legal ID' %>
+      <%= form.input :description, as: :text %>
+      <div class='row'><!--phones row -->
+        <div class = 'col-sm-4 col-md-6 col-lg-6' >
+          <%= form.input :phone1, label: 'Telephone' %>
+        </div>
+        <div class='col-sm-4 col-md-6 col-lg-6'>
+          <%= form.input :phone2, label: 'Telephone' %>
+        </div>
+      </div><!-- end phones row -->
+      <%= form.input :email, label: 'Email' %>
+      <%= link_to 'Back', gymsites_path %>
+    </div><!-- end first column -->
+
+    <div class = 'col-md-4'><!-- second column -->
+      <%= form.input :address1, label: 'Street Address' %>
+      <%= form.input :address2, label: 'Street address' %>
+      <%= form.input :city %>
+      <div class='row'> <!-- state and zip row -->
+        <div class = 'col-md-6' >
+          <%= form.input :state %>
+        </div>
+        <div class = 'col-md-6 ' >
+          <%= form.input :zip %>
+        </div>
+      </div><!-- end state and zip row -->
+      <div class='row'> <!-- country & instruct. row -->
+        <div class = 'col-sm-4 col-md-6 col-lg-6' >
+          <%= form.input :country  %>
+        </div>
+
+        <div class = 'col-sm-4 col-md-6 col-lg-6' >
+          <%= form.input :instructions %>
+        </div>
+      </div><!--end country & instruct row -->
+    </div><!--end second column -->
+    <div class = 'col-md-4'><!--third column -->
+      <%= form.input :sector, collection: Gymsite.sectors.keys %>
+      <%= form.input :region, collection: Gymsite.regions.keys %>
+      <%= form.input :start_date, html5: true, label: 'Start Date' %>
+      <%= form.input :thru_date, html5: true, label: 'Thru Date' %>
+      <br><br>
+      <%= form.button :submit, "Edit Gym Site", class: "btn btn-large btn-danger", "data-disable-with" => "Submitting.."%>
+    </div><!-- end third column -->
+    <% end %>
+  </div><!-- end main row -->
+</div><!--end container  -->

@@ -3,7 +3,6 @@ class CreateRoles < ActiveRecord::Migration[5.2]
     create_table :roles do |t|
       t.string :role_name
 
-
     end
   end
 end

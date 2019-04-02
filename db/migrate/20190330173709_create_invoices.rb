@@ -6,10 +6,7 @@ class CreateInvoices < ActiveRecord::Migration[5.2]
       t.string :invoice_reference
       t.date :invoice_date
       t.decimal :amount, precision: 20, scale: 2
-      
 
-
-      t.timestamps
     end
   end
 end

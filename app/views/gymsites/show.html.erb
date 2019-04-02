@@ -1,0 +1,37 @@
+<div class = 'container'>
+  <div class= 'row'>
+    <div class = 'col-sm-12 col-md-12 col-lg-12 '>
+  <h2> <%= @gymsite.surname.capitalize%>&nbsp; Gymsite Details </h2>
+  <% gymsite = @gymsite %>
+  </div>
+  </div>
+  <div class= 'row'>
+    <div class = 'col-sm-6 col-md-6 col-lg-6 offset-md-4'>
+  <p><strong>Legal ID:</strong> <%= gymsite.legal_id%></p>
+  <p><strong>Email: </strong><%= gymsite.email%></p>
+  <p><strong>Logo: </strong><%= gymsite.logo%></p>
+  <p><strong>Description: </strong><%= gymsite.description%></p>
+  <p><strong>Start Date:</strong> <%= gymsite.start_date%></p>
+  <p><strong>Telephone: </strong> <%= gymsite.phone1%></p>
+  <p><strong>Telephone: </strong> <%= gymsite.phone2%></p>
+  <br> <br>
+  <%= link_to 'Back', gymsites_path %>
+  </div>
+  <div class = 'col-sm-4 col-md4 col-lg-4'>
+  <p><strong>Address: </strong><%= gymsite.address1%></p>
+  <p><strong>Address: </strong><%= gymsite.address2%></p>
+  <p><strong>City: </strong><%= gymsite.city%></p>
+  <div class = 'row'>
+    <div class = 'col-md-6'>
+  <p><strong>State: </strong><%= gymsite.state%></p>
+  </div>
+  <div class = 'col-md-6'>
+  <p><strong>Postal Code:</strong> <%= gymsite.zip%></p></div>
+  </div>
+  <p><strong>Country: </strong><%= gymsite.country%></p>
+  <p><strong>Region: </strong><%= gymsite.region%></p>
+  <p><strong>Sector: </strong><%= gymsite.sector%></p>
+  <p><strong>Instructions: </strong><%= gymsite.instructions%></p>
+  </div>
+
+  </div>

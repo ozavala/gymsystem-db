@@ -21,7 +21,7 @@ puts 'gymsite created'
 Role.create(role_name: 'admin')
 Role.create(role_name: 'staff1')
 Role.create(role_name: 'trainer')
-Role.create(role_name: 'member')
+Role.create(role_name: 'enrolled')
 
 puts ' 4 roles created'
 
@@ -29,7 +29,8 @@ usr = User.create(
   gymsite_id: 1,
   first_name: 'Fernando',
   last_name: 'Zavala',
-  email: 'ferzagi@roundone.com'
+  email: 'ferzagi@roundone.com',
+  password: 'password'
 )
 
 usr.roles_users.create(role_id: 1)

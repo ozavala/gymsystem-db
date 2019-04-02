@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'access#menu'
-  resources :gymsites, only: [:index, :new, :edit, :create, :set_current_gymsite] do
+  resources :gymsites, only: [:index, :show, :new, :edit, :update, :create, :destroy, :set_current_gymsite] do
     get :set_current_gymsite
   end
 

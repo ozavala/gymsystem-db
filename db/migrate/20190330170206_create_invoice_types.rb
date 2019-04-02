@@ -4,7 +4,6 @@ class CreateInvoiceTypes < ActiveRecord::Migration[5.2]
       t.string :invoice_type_code
       t.decimal :tax_percent
 
-      t.timestamps
     end
   end
 end

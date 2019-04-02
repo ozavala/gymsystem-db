@@ -58,6 +58,8 @@ group :development do
   gem 'sassc-rails', '>= 2.1.0'
   gem 'jquery-rails'
   gem 'font-awesome-rails'
+  gem 'country_select'
+  # gem 'countries'
 end
 
 

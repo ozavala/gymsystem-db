@@ -17,8 +17,6 @@
 #  level          :integer
 #  source         :integer
 #  notes          :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
 #
 
 class Profile < ApplicationRecord

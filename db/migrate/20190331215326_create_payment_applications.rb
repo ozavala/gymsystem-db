@@ -6,7 +6,6 @@ class CreatePaymentApplications < ActiveRecord::Migration[5.2]
       t.references :invoice_line, foreign_key: true
       t.references :payment, foreign_key: true
 
-      t.timestamps
     end
   end
 end

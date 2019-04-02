@@ -13,7 +13,6 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.text :instruction
       t.integer :use_of
 
-      t.timestamps
     end
   end
 end

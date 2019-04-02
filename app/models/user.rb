@@ -14,8 +14,8 @@
 #
 
 class User < ApplicationRecord
-  has_secure_password 
-
+  has_secure_password
+  after_initialize :current_gymsite
   belongs_to :gymsite
   has_many :roles_users, inverse_of: :user
   has_many :roles, through: :roles_users
@@ -29,5 +29,16 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :roles
   accepts_nested_attributes_for :profile
 
+  # def current_gymsite
+  #   self.gymsite ||= build_gymsite
+  # end
+  def current_gymsite
+     if @gymsite
+       current_gymsite = @gymsite
+     else
+       @gymsite = Gymsite.first
+       current_gymsite = @gymsite
+     end
+  end
 
 end

@@ -4,7 +4,6 @@ class CreateAccountTypes < ActiveRecord::Migration[5.2]
       t.string :acc_type
       t.string :acc_class
 
-      t.timestamps
     end
   end
 end

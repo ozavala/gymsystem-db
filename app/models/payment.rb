@@ -2,14 +2,17 @@
 #
 # Table name: payments
 #
-#  id              :bigint(8)        not null, primary key
-#  gl_account_id   :bigint(8)
-#  user_account_id :bigint(8)
-#  payment_date    :date
-#  due_date        :date
-#  payment_status  :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                     :bigint(8)        not null, primary key
+#  payment_method_type_id :integer
+#  pay_type_id            :integer
+#  effective_date         :date
+#  transaction_date       :date
+#  payment_ref_no         :string
+#  description            :string
+#  pay_comment            :text
+#  amount                 :decimal(20, )
+#  user_id                :integer
+#  gymsite_id             :integer
 #
 
 class Payment < ApplicationRecord
