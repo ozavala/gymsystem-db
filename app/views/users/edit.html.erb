@@ -1,12 +1,18 @@
-<%= simple_form_for @user do |f| %>
-<%= f.association :gymsite, label_method: :surname, value_method: :id, include_blank: false%>
-<%= f.input :first_name, label: 'First Name' %>
-<%= f.input :last_name, label: 'Last Name' %>
-<%= f.input :email %>
-<%= f.simple_fields_for(:roles) do |frol|%>
-<%= frol.association :roles, as: :check_boxes, label_method: :role_name, value_method: :id, include_blank: false %>
-<% end %>
-<p><%= f.button :submit%></p>
-<% end %>
-<%= link_to 'New User', new_user_path %>
-<%= link_to 'Index', users_path %>
+<div class= 'container'>
+  <h2> Edit User </h2>
+  <div class = 'simple_form'>
+    <div class='row'>
+      <div class='col-sm-6 col-md-6 col-lg-6 offset-md-2'>
+        <%= simple_form_for @roleup, url: users_path do |form| %>
+        <div>
+          <%=form.input :user_first_name %>
+          <%=form.input :user_last_name %>
+          <%=form.input :user_password %>
+            <%= form.input :user_role_name, collection: @user_role_names = Role.all.pluck(:role_name), label: 'User Role', include_blank: false %>
+          <%= form.submit %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

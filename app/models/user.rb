@@ -16,9 +16,9 @@
 class User < ApplicationRecord
   has_secure_password
   after_initialize :current_gymsite
-  
+
   belongs_to :gymsite
-  has_many :roles_users, inverse_of: :user
+  has_many :roles_users
   has_many :roles, through: :roles_users
   has_one :profile
   has_many :addresses

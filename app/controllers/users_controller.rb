@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-before_action :set_user, only: [:edit, :show, :update, :destroy]
+before_action :set_user, only: [ :update, :destroy]
 
 def index
   @users = User.all
+
 end
 
 def new
@@ -14,6 +15,7 @@ def edit
 end
 
 def show
+  @user = User.find(params[:id])
   #@user = current_user
 end
 

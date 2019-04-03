@@ -2,12 +2,17 @@
   <div class = 'simple_form'>
     <div class='row'>
       <div class='col-sm-6 col-md-6 col-lg-6 offset-md-2'>
+        <h2> New User </h2>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-6 col-md-6 col-lg-6 offset-md-2'>
         <%= simple_form_for @roleup, url: users_path do |form| %>
         <div>
           <%=form.input :user_first_name %>
           <%=form.input :user_last_name %>
           <%=form.input :user_password %>
-            <%= form.input :user_role_name, collection: @user_role_names = Role.all.pluck(:role_name), label: 'User Role', include_blank: false %>
+          <%= form.input :user_role_name, collection: @user_role_names = Role.all.pluck(:role_name), label: 'User Role', include_blank: false %>
           <%= form.submit %>
         </div>
       </div>

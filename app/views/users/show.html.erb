@@ -1,11 +1,12 @@
-Show User
-<table>
+<div class= 'container'>
+<h2>User Information</h2>
+<table class= 'table-sm table-hover' >
   <thead>
     <th> Gym Site </th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
-    <th>User Role</th>
+    <th>User Roles</th>
   </thead>
 <tbody>
   <% user = @user %>
@@ -13,11 +14,14 @@ Show User
   <td><%= user.first_name %><br></td>
   <td><%= user.last_name %></td>
   <td><%= user.email %><br></td>
-
-  <td><%= user.roles %></td>
-
+  <% user.roles.each do |rol|%>
+  <td><%=rol.role_name %></td>
+  <% end %>
+  <td><%= link_to 'Edit', edit_user_path(user)  %></td>
+  <td><%= link_to 'Show', user_path(user)  %></td>
+  <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?.' } %></td>
 </tbody>
 </table>
-<p><%= link_to 'Edit User', edit_user_path%></p>
+<p><%= link_to 'Back', users_path%></p>
 
-  <td><%= link_to 'Delete', user, confirm: 'Are you sure?', method: :delete %></td>
+</div>
