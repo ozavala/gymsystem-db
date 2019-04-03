@@ -1,13 +1,11 @@
 <%= simple_form_for @user do |f| %>
 <%= f.association :gymsite, label_method: :surname, value_method: :id, include_blank: false%>
-<%= f.label :first_name, 'First Name'%>
-<%= f.input :first_name %><br>
-<%= f.label :last_name, 'Last Name' %>
-<%= f.input :last_name %><br>
-<%= f.label :email, 'Email' %>
-<%= f.input :email %><br>
-
-<%= f.association :roles, as: :check_boxes, label_method: :role_name, value_method: :id, include_blank: false%>
+<%= f.input :first_name, label: 'First Name' %>
+<%= f.input :last_name, label: 'Last Name' %>
+<%= f.input :email %>
+<%= f.simple_fields_for(:roles) do |frol|%>
+<%= frol.association :roles, as: :check_boxes, label_method: :role_name, value_method: :id, include_blank: false %>
+<% end %>
 <p><%= f.button :submit%></p>
 <% end %>
 <%= link_to 'New User', new_user_path %>

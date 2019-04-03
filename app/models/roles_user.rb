@@ -10,6 +10,6 @@
 #
 
 class RolesUser < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :roles_users
   belongs_to :role
 end

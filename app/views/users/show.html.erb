@@ -14,8 +14,8 @@ Show User
   <td><%= user.last_name %></td>
   <td><%= user.email %><br></td>
 
-  <td><%= Role.find(user.role_ids)[0].role_name %></td>
-  
+  <td><%= user.roles %></td>
+
 </tbody>
 </table>
 <p><%= link_to 'Edit User', edit_user_path%></p>

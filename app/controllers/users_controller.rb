@@ -6,8 +6,8 @@ def index
 end
 
 def new
-  @user = User.new
-  @user.roles.build
+  @roleup = Roleup.new
+  # @user.roles_users.build
 end
 
 def edit
@@ -18,13 +18,13 @@ def show
 end
 
 def create
-    @user = User.new(user_params)
+    @roleup = Roleup.new(roleup_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'Gymsite was successfully created.' }
+      if @roleup.save
+        set_current_user(@roleup_user)
+        redirect_to root_path
       else
-        format.html { render :new }
+        render :new
       end
     end
   end
@@ -37,7 +37,7 @@ def update
     else
       format.html { render :edit, notice: 'Error user was not updated.' }
     end
-  end
+
 end
 
 def destroy
@@ -55,11 +55,14 @@ private
   end
 
   def set_user
-
     @user = User.find(params[:id])
   end
 end
 
-def current_user
-  @user ||= :set_user
+def set_current_user(roleup_user)
+  @user = roleup_user
+end
+
+def roleup_params
+  params.require(:roleup).permit(:user_first_name, :user_last_name, :user_password, :user_role_name)
 end
