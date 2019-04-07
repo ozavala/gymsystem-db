@@ -1,0 +1,22 @@
+
+<div class = 'container'>
+  <div class = 'simple_form' >
+  <%=simple_form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+  <h2><%= pluralize(@product.errors.count, 'error')%> prohibited this for being saved</h2>
+  <ul>
+    <%@product.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+
+  <% end %>
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= simple_fields_for :categories do |ff| %>
+    <%= ff.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    <% end %>
+    <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

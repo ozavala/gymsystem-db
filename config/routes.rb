@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     get :set_current_gymsite
   end
   resources :users
-  
+  resources :products
+
   get 'admin', to: 'access#menu'
   get 'access/menu'
   get 'access/login'

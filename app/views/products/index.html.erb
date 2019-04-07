@@ -1,0 +1,13 @@
+<div class = 'container'>
+  <% @products.each do |product| %>
+  <%=product.name %>
+  <%=product.price %>
+  <% product.categories.each do |category|%>
+  <ul>
+    <li><%=category.name%></li>
+  </ul>
+  <% end %>
+  <%= link_to 'Edit', edit_product_path(product.id) %><br>
+  <% end %>
+  | <%= link_to 'All Products', products_path %>
+  <div>

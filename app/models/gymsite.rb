@@ -24,7 +24,7 @@
 #
 
 class Gymsite < ApplicationRecord
-  has_many :users, dependent: :nullify
+  has_many :users, inverse_of: :gymsite
 
   enum region: {no_escogida: 0, norte: 1, centro: 2,  sur: 3}
   enum sector: {no_disponible: 0, village: 1, alahambra: 2, navona: 3, lagos: 4, batán: 5}

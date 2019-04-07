@@ -29,7 +29,6 @@ class GymsitesController < ApplicationController
   end
 
   def create
-    byebug
     @gymsite = Gymsite.new(gymsite_params)
     if @gymsite.save
       set_current_gymsite

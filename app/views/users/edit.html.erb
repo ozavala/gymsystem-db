@@ -3,16 +3,19 @@
   <div class = 'simple_form'>
     <div class='row'>
       <div class='col-sm-6 col-md-6 col-lg-6 offset-md-2'>
-        <%= simple_form_for @roleup, url: users_path do |form| %>
+        <%= simple_form_for @user, url: edit_user_path do |form| %>
         <div>
-          <%=form.input :user_first_name %>
-          <%=form.input :user_last_name %>
-          <%=form.input :user_password %>
-            <%= form.input :user_role_name, collection: @user_role_names = Role.all.pluck(:role_name), label: 'User Role', include_blank: false %>
+          <%=form.association :gymsite %>
+          <%=form.input :first_name %>
+          <%=form.input :last_name %>
+          <%=form.input :email %>
+          <%=form.simple_fields_for :roles_users do |rol| %>
+         <%=rol.collection_check_boxes :role_id, Role.all, :id, :role_name %><br>
+         <% end %>
           <%= form.submit %>
+          <% end %>
         </div>
       </div>
     </div>
-    <% end %>
   </div>
 </div>

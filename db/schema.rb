@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_141651) do
+ActiveRecord::Schema.define(version: 2019_04_05_154903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,21 @@ ActiveRecord::Schema.define(version: 2019_04_01_141651) do
     t.string "address1"
     t.string "address2"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
+    t.index ["product_id"], name: "index_categorizations_on_product_id"
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -152,6 +167,13 @@ ActiveRecord::Schema.define(version: 2019_04_01_141651) do
     t.index ["user_id"], name: "index_phones_on_user_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "username"
@@ -210,6 +232,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_141651) do
   add_foreign_key "accounting_periods", "gymsites"
   add_foreign_key "accounting_periods", "period_types"
   add_foreign_key "addresses", "users"
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "products"
   add_foreign_key "enrollments", "packages"
   add_foreign_key "enrollments", "payments"
   add_foreign_key "gl_accounts", "account_types"

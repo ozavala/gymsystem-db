@@ -1,0 +1,8 @@
+<div class = 'container'>
+  <%= simple_form_for(@product) do |f| %>
+    <%= f.input :name %>
+  <%= f.input :price %>
+  <%= f.association :categories, as: :check_boxes %>
+  <%= f.button :submit %>
+<% end %>
+</div>
